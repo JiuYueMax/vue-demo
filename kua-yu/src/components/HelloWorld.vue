@@ -1,28 +1,26 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    
+    <h3>跨域解决方案</h3>
   </div>
 </template>
 
 <script>
 
-import api from "../api/index.js"
+  import axios from 'axios';
 
 export default {
-  name: 'HelloWorld2',
+  name: 'HelloWorld',
   props: {
     msg: String
   },
   mounted() {
-    api.getChengPin().then(res =>{
-      console.log(res.data);
+    axios.get("/api/FingerUnion/list.php")
+    .then(function(res){
+      console.log(res);
+    },function(err){
+      console.log(err);
     })
-
-    api.getChengPin2("iwen@qq.com","iwen123").then(res =>{
-      console.log(res.data);
-    })
-
   },
 }
 </script>
